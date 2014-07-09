@@ -1,0 +1,3 @@
+#EXTM3U
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=61531,CODECS="avc1.77.31",RESOLUTION=854x480
+http://iphone-streaming.ustream.tv/watch/playlist.m3u8?cid=17074538&stream=live_6&appType=103&appVersion=3&conn=wifi&group=iphone
