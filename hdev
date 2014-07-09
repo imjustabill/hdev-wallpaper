@@ -4,4 +4,4 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
-cvlc -V dummy --video-filter scene  --no-audio --scene-path $DIR --scene-prefix hdev --scene-format jpg --scene-replace --run-time 1 --deinterlace 1 --deinterlace-mode yadif2x $DIR/playlist.m3u8 &  sleep 10 && killall -9 vlc &&  mv hdev.jpg /var/www/hdev/hdev.jpg 
+cvlc -V dummy --video-filter scene  --no-audio --scene-path $DIR --scene-prefix hdev --scene-format jpg --scene-replace --run-time 1 --deinterlace 1 --deinterlace-mode yadif2x $DIR/playlist.m3u8 &  sleep 10 && killall -9 vlc &&  mv $DIR/hdev.jpg /var/www/hdev/hdev.jpg 
