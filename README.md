@@ -6,3 +6,5 @@ Automatically update your wallpaper with recent images from the [HDEV](http://ww
 Currently, this only generates a screenshot of the live stream and moves it to your /var/www directory. I'm planning on adding detection for black (night time) and gray (no connection) frames, so they are not displayed. 
 
 You can see the live version on [my website](http://billeberly.com/hdev/hdev.jpg).
+
+*Currently broken, due to some Ustream issues.*
