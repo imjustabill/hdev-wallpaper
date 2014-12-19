@@ -5,5 +5,4 @@ Script that generates a screencap of the [HDEV](http://www.ustream.tv/channel/is
 
 The script compares every screenshot against a blank image, and the standard "offline" image, and will not publish it if the image is too similar. 
 
-You can see the live version on [my website](http://billeberly.com/hdev/hdev.jpg).
-
+Here's what my most recent shot looks like:  ![HDEV screenshot](http://billeberly.com/hdev/hdev.jpg).
