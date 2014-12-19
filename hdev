@@ -1,46 +1,41 @@
 #!/bin/bash
 
-function checkImage(){
-	offline="$(compare -metric RMSE $DIR/hdev.jpg $DIR/offline.jpg NULL: 2>&1)"
-	regex="\(([0-9]\.[0-9]*)\)"
-	echo $offline
-	if [[ ${offline} =~ ${regex} ]]; then
-		offlineFloat=${BASH_REMATCH[1]}
-		offlinePercent="$(echo $offlineFloat*100/1 | bc)"
-		echo $offlinePercent
-		if  [ $offlinePercent -lt 10 ]; then
-			echo "HDEV is offline"
-			return 1
-		fi
-	fi
-	
-	blank="$(compare -metric RMSE $DIR/hdev.jpg $DIR/blank.jpg NULL: 2>&1)"
-	echo $blank
-	if [[ ${blank} =~ ${regex} ]]; then
-		blankFloat=${BASH_REMATCH[1]}
-		blankPercent="$(echo $blankFloat*100/1 | bc)"
-		echo $blankPercent
-		if  [ $blankPercent -lt 4 ]; then
-			echo "HDEV is blank"
-			return 1
-		fi
-	fi
-
-	echo "HDEV is online"
-	return 0
-}
-
 function generateImage(){
     cvlc --rc-host localhost:8082 -V dummy --video-filter scene  --no-audio --scene-path $DIR --scene-prefix hdev --scene-format jpg --scene-replace --run-time 1 --deinterlace 1 --deinterlace-mode yadif2x $DIR/playlist.m3u8 & sleep 10 &&  echo quit | nc localhost 8082
+}
+
+function imagecomp(){
+	compareOutput="$(compare -metric RMSE $DIR/hdev.jpg $DIR/$1 NULL: 2>&1)"
+	regex="\(([0-9]\.[0-9]*)\)"
+	echo $compareOutput
+	if [[ ${compareOutput} =~ ${regex} ]]; then
+		matchFloat=${BASH_REMATCH[1]}
+		matchPercent="$(echo $matchFloat*100/1 | bc)"
+		echo $matchPercent
+		if  [ $matchPercent -lt 10 ]; then
+			echo "HDEV is offline:" $1
+			quit
+		fi
+	fi
+}
+
+function quit(){
+	killall -9 vlc
+	echo "Exiting"
+	exit 0
 }
 
 # Contains the directory the script is in
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
  
 generateImage
-if checkImage ; then
-	echo "Copying image"
-	mv $DIR/hdev.jpg /var/www/hdev/hdev.jpg
-fi
-killall -9 vlc
-echo "DONE"
+
+imagecomp "offline.jpg" 
+imagecomp "blank.jpg"
+imagecomp "grey.jpg" 
+imagecomp "logo.jpg" 
+
+echo "Copying image"
+mv $DIR/hdev.jpg /var/www/hdev/hdev.jpg
+
+quit
