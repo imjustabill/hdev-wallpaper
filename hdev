@@ -10,6 +10,7 @@ function imagecomp(){
 	echo $compareOutput
 	if [[ ${compareOutput} =~ ${regex} ]]; then
 		matchFloat=${BASH_REMATCH[1]}
+		# Can't do floating point math in bash
 		matchPercent="$(echo $matchFloat*100/1 | bc)"
 		echo $matchPercent
 		if  [ $matchPercent -lt 10 ]; then
@@ -30,12 +31,17 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
  
 generateImage
 
-imagecomp "offline.jpg" 
+#imagecomp "offline.jpg" 
 imagecomp "blank.jpg"
 imagecomp "grey.jpg" 
 imagecomp "logo.jpg" 
 
 echo "Copying image"
+DATE_PATH=$(date +%Y/%m/%d)
+TIMESTAMP=$(date +%s)
+DEST=/var/www/hdev/$DATE_PATH
+mkdir -p $DEST
+cp $DIR/hdev.jpg $DEST/$TIMESTAMP.jpg
 mv $DIR/hdev.jpg /var/www/hdev/hdev.jpg
 
 quit
