@@ -6,13 +6,12 @@ function generateImage(){
 
 function imagecomp(){
 	compareOutput="$(compare -metric RMSE $DIR/hdev.jpg $DIR/$1 NULL: 2>&1)"
-	regex="\(([0-9]\.[0-9]*)\)"
-	echo $compareOutput
+	regex="\(([0-9]\.?[0-9]*)\)"
 	if [[ ${compareOutput} =~ ${regex} ]]; then
 		matchFloat=${BASH_REMATCH[1]}
 		# Can't do floating point math in bash
 		matchPercent="$(echo $matchFloat*100/1 | bc)"
-		echo $matchPercent
+		echo $1 : $matchPercent"%" different
 		if  [ $matchPercent -lt 10 ]; then
 			echo "HDEV is offline:" $1
 			quit
