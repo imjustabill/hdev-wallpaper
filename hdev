@@ -43,4 +43,9 @@ mkdir -p $DEST
 cp $DIR/hdev.jpg $DEST/$TIMESTAMP.jpg
 mv $DIR/hdev.jpg /var/www/hdev/hdev.jpg
 
+# Get current location and build tweet string
+TWEET=$(curl -s -k  https://api.wheretheiss.at/v1/satellites/25544  | jq -r "\"Current ISS position is above \(.latitude),\(.longitude) http://maps.google.com/maps?q=loc:\(.latitude),\(.longitude)\"")
+echo ${TWEET}
+# Post Tweet
+t update -f /var/www/hdev/hdev.jpg "${TWEET}"
 quit
