@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/imjustabill/bin/hdev/:/home/imjustabill/bin/ircanywhere/:/home/imjustabill/bin/iss/:/home/imjustabill/bin/subway/:/home/imjustabill/bin/UStream-recorder/:/home/imjustabill/bin/ustream-to-ffmpeg/:/home/imjustabill/bin/hdev/:/home/imjustabill/bin/ircanywhere/:/home/imjustabill/bin/iss/:/home/imjustabill/bin/subway/:/home/imjustabill/bin/UStream-recorder/:/home/imjustabill/bin/ustream-to-ffmpeg/"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 function generateImage(){
     cvlc --rc-host localhost:8082 -V dummy --video-filter scene  --no-audio --scene-path $DIR --scene-prefix hdev --scene-format jpg --scene-replace --run-time 1 --deinterlace 1 --deinterlace-mode yadif2x $DIR/playlist.m3u8 & sleep 10 &&  echo quit | nc localhost 8082
@@ -14,7 +14,7 @@ function imagecomp(){
 		# Can't do floating point math in bash
 		matchPercent="$(echo $matchFloat*100/1 | bc)"
 		echo $1 : $matchPercent"%" different
-		if  [ $matchPercent -lt 10 ]; then
+		if  [ $matchPercent -lt $2 ]; then
 			echo "HDEV is offline:" $1
 			quit
 		fi
@@ -32,10 +32,12 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
  
 generateImage
 
-imagecomp "offline.jpg" 
-imagecomp "blank.jpg"
-imagecomp "grey.jpg" 
-imagecomp "logo.jpg" 
+imagecomp "offline.jpg" 5
+imagecomp "blank.jpg" 5
+imagecomp "grey.jpg" 5
+imagecomp "logo.jpg" 5
+imagecomp "maintenance.jpg" 5
+imagecomp "maintenance2.jpg" 5
 
 echo "Copying image"
 DATE_PATH=$(date +%Y/%m/%d)
