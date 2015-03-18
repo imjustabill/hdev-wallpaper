@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/imjustabill/bin/hdev/:/home/imjustabill/bin/ircanywhere/:/home/imjustabill/bin/iss/:/home/imjustabill/bin/subway/:/home/imjustabill/bin/UStream-recorder/:/home/imjustabill/bin/ustream-to-ffmpeg/:/home/imjustabill/bin/hdev/:/home/imjustabill/bin/ircanywhere/:/home/imjustabill/bin/iss/:/home/imjustabill/bin/subway/:/home/imjustabill/bin/UStream-recorder/:/home/imjustabill/bin/ustream-to-ffmpeg/"
+
 function generateImage(){
     cvlc --rc-host localhost:8082 -V dummy --video-filter scene  --no-audio --scene-path $DIR --scene-prefix hdev --scene-format jpg --scene-replace --run-time 1 --deinterlace 1 --deinterlace-mode yadif2x $DIR/playlist.m3u8 & sleep 10 &&  echo quit | nc localhost 8082
 }
