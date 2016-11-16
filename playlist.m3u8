@@ -1,7 +1,9 @@
 #EXTM3U
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1204214,CODECS="avc1.77.30, mp4a.40.2",RESOLUTION=640x360
-#http://sjc-uhls-proxy04.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=viewer_360p&connectionId=oldurl-aa110c91ae8805c88bf6b2bad681b5dd48b390df&group=iphone
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1547512,CODECS="avc1.77.31, mp4a.40.2",RESOLUTION=854x480
-http://sjc-uhls-proxy04.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=viewer_480p&connectionId=oldurl-aa110c91ae8805c88bf6b2bad681b5dd48b390df&group=iphone
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=819012,CODECS="avc1.77.21, mp4a.40.2",RESOLUTION=426x240
-#http://sjc-uhls-proxy04.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=viewer_240p&connectionId=oldurl-aa110c91ae8805c88bf6b2bad681b5dd48b390df&group=iphone
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=494817,CODECS="avc1.77.31, mp4a.40.2",RESOLUTION=854x480
+#http://sjc-uhls-proxy116.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=4&connectionId=oldurl-f5bdc57958dcf937d8c76c619b641dcabee21226&group=iphone
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=875965,CODECS="avc1.100.40, mp4a.40.2",RESOLUTION=1280x720
+http://sjc-uhls-proxy116.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=1&connectionId=oldurl-f5bdc57958dcf937d8c76c619b641dcabee21226&group=iphone
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=386865,CODECS="avc1.77.30, mp4a.40.2",RESOLUTION=640x360
+#http://sjc-uhls-proxy116.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=3&connectionId=oldurl-f5bdc57958dcf937d8c76c619b641dcabee21226&group=iphone
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=315137,CODECS="avc1.77.21, mp4a.40.2",RESOLUTION=426x240
+#http://sjc-uhls-proxy116.ustream.tv/watch/playlist.m3u8?appType=103&appVersion=3&conn=wifi&cid=17074538&stream=2&connectionId=oldurl-f5bdc57958dcf937d8c76c619b641dcabee21226&group=iphone

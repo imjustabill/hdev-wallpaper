@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# The playlist file can be retrieved from:  http://iphone-streaming.ustream.tv/uhls/17074538/streams/live/iphone/playlist.m3u8
+
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 function generateImage(){
@@ -44,6 +46,9 @@ DATE_PATH=$(date +%Y/%m/%d)
 TIMESTAMP=$(date +%s)
 DEST=/var/www/hdev/$DATE_PATH
 mkdir -p $DEST
+
+echo $DEST
+echo $TIMESTAMP
 cp $DIR/hdev.jpg $DEST/$TIMESTAMP.jpg
 mv $DIR/hdev.jpg /var/www/hdev/hdev.jpg
 
